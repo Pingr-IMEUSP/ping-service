@@ -27,7 +27,7 @@ const parseAndValidatePingData = (data: PingParams) => {
       } else {
         wordCounter += word.length;
         if (word[0] == '@') {
-          mentions.push(word);
+          mentions.push(word.replace(/\W/g, ''));
         }
       }
     });
@@ -50,6 +50,7 @@ const parseAndValidatePingData = (data: PingParams) => {
   return {
     isValid: true,
     payload: {
+      id: ++Ping.count,
       author,
       text,
       hashtags,
@@ -70,6 +71,7 @@ router.post('/pings', (ctx: Context) => {
     return;
   }
 
+  // Emissão do evento
   broker.publish('CREATED_PING', JSON.stringify(payload));
   ctx.body = payload;
 });
