@@ -1,6 +1,6 @@
 import * as Router from 'koa-router';
 import { Context } from 'koa';
-import Ping from './mockdb';
+import Ping from './db/mockdb';
 
 interface PingParams {
   author: string;

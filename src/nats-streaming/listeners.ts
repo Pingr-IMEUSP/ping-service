@@ -1,5 +1,5 @@
 import { Message } from 'node-nats-streaming';
-import Ping, { PingInterface } from './mockdb';
+import Ping, { PingInterface } from '../db/mockdb';
 
 import { stan } from './stan';
 
