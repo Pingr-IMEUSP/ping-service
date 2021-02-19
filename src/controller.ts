@@ -1,5 +1,5 @@
 import { Context } from 'koa';
-import Ping, { PingInterface } from './db/mockdb';
+import { Ping, PingInterface } from './db/mockdb';
 
 interface PingParams {
   author: string;
