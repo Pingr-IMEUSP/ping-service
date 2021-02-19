@@ -2,8 +2,8 @@ export interface PingInterface {
   id: number;
   author: string;
   text: string;
-  hashtags?: string[];
-  mentions?: string[];
+  hashtags: string[];
+  mentions: string[];
 }
 
 class Ping {
