@@ -25,6 +25,10 @@ export default class PingController {
       return;
     }
 
+    if (payload && payload.hashtags.length > 0) {
+      broker.publish('PING_CREATED_WITH_KEYWORDS', JSON.stringify(payload));
+    }
+
     // Emissão do evento
     broker.publish('PING_CREATED', JSON.stringify(payload));
     ctx.body = payload;
