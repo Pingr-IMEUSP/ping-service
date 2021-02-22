@@ -26,7 +26,7 @@ export function setupListeners(): void {
     async (msg: Message): Promise<void> => {
       const user: UserInterface = JSON.parse(msg.getData() as string);
 
-      // await User.all.push(user);
+      await User.all.push(user);
       console.log('[USER_CREATED]:', user);
     },
   );

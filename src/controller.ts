@@ -1,5 +1,5 @@
 import { Context } from 'koa';
-import { Ping, PingInterface } from './db/mockdb';
+import { Ping, PingInterface, User } from './db/mockdb';
 
 interface PingParams {
   author: string;
@@ -63,6 +63,14 @@ export default class PingController {
 
     if (hashtags.length > 10) {
       errors.push('Ping exceeded 10 hashtags');
+    }
+
+    if (mentions.length > 0) {
+      mentions.forEach((mention) => {
+        if (!User.all.some((user) => user.username === mention)) {
+          errors.push(`Username ${mention} doesn't exist`);
+        }
+      });
     }
 
     if (errors.length > 0) {
