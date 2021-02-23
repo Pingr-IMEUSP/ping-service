@@ -21,7 +21,9 @@ export function setupListeners(): void {
   createdUser.on('message', (msg: Message): void => {
     const user: UserInterface = JSON.parse(msg.getData() as string);
 
+    User.count++;
     User.all.push(user);
+
     console.log('[USER_CREATED]:', user);
   });
 }
