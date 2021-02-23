@@ -57,6 +57,10 @@ export default class PingController {
         }
       });
 
+    if (!User.all.some((user) => user.username === author)) {
+      errors.push(`Author ${author} doesn't exist`);
+    }
+
     if (wordCounter > 140) {
       errors.push('Ping exceeded 140 characters');
     }
